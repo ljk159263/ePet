@@ -5,6 +5,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
 
     <application
@@ -20,10 +21,24 @@
         android:networkSecurityConfig="@xml/network_security_config"
         >
 
-        <meta-data android:name="com.kakao.sdk.AppKey" android:value="a33c4f6269c6480b1d7f99fcda97528b"/>
+        <meta-data android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCuupjw_Zi-vrI8cjV6vTugrhpZmY6Omsw"/>
+
+        <meta-data
+            android:name="android.app.lib_name"
+            android:value="" />
 
 
-        <activity android:name=".HomeActivity" />
+        <activity android:name=".HomeActivity"
+            android:exported="true">
+
+        <intent-filter>
+            <action android:name="kakaomap://open?page=placeSearch" />
+            <category android:name="android.intent.category.DEFAULT"/>
+        </intent-filter>
+        </activity>
+
+
         <activity
             android:name=".LoginActivity"
             android:exported="true">
@@ -32,10 +47,9 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
         </activity>
+
+
 
     </application>
 
